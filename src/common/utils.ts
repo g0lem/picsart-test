@@ -1,4 +1,4 @@
-import { canvasElementId, colorCircleElementId, colorDisplayElementId, colorPickerModalElementId } from "./constants";
+import { canvasElementId, colorCircleElementId, colorDisplayElementId, colorPickerModalElementId, copyColorButtonId } from "./constants";
 
 export const getCanvasHTMLElement = () => <HTMLElement>document.getElementById(canvasElementId)!;
 
@@ -9,12 +9,23 @@ export const getColorCircleHTMLElement = () => <HTMLElement>document.getElementB
 
 export const getColorPickerModalHTMLElement = () => <HTMLElement>document.getElementById(colorPickerModalElementId)!;
 
+export const getCopyColorButton = () => <HTMLElement>document.getElementById(copyColorButtonId)!;
+
+
 
 export const getCanvas = () => <HTMLCanvasElement>document.getElementById(canvasElementId)!
 
 export const getContext = () => getCanvas().getContext('2d')!
 
 export const copyToClipboard = (text: string) => navigator.clipboard.writeText(text);
+
+export const copyCurrentColor = () => {
+    const currentColor = getColorDisplayHTMLElement();
+
+    const currentColorText = currentColor.innerText;
+
+    copyToClipboard(currentColorText);
+}
 
 export const resizeCanvasToFitImage = (imageBitmap: ImageBitmap) => {
     const canvasElement = getCanvas();

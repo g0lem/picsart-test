@@ -1,5 +1,5 @@
 import { canvasElementId } from './common/constants'
-import { bindEventListener } from './events/eventListener';
+import { bindCopyColor, bindEventListener } from './events/eventListener';
 import { renderCanvas, renderFromBlob } from './render/renderCanvas'
 import { uploadImageHandler } from './render/uploadImageHandler';
 import './style.css'
@@ -17,8 +17,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <p>You can upload your own photo as well using the Upload button</p>
       
     </div>
-    <div id="colorDisplayText">
-      No Color Picked 
+    <div>
+      Currrent color:
+      <div id="colorDisplayText">
+        No Color Picked 
+      </div>
+      <button id="copyColorButton">Copy Color</button>
     </div>
     <div>
       <input type="file" id="customImage" name="filename" accept=".jpg, .jpeg, .png"/>
@@ -29,7 +33,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <canvas id="${canvasElementId}"/>
   </div>
 `
-
+bindCopyColor();
 uploadImageHandler();
 renderCanvas();
 
