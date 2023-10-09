@@ -7,21 +7,23 @@ import { convertImageDataToHexCode, getCanvasHTMLElement, getColorPickerModalHTM
 
 export const listenForClick = (mouseEvent: MouseEvent) => {
     const {
+        offsetX,
+        offsetY,
         x,
         y
     } = mouseEvent;
 
-    const imageData = getImageDataFromCoords(x,y);
+    const imageData = getImageDataFromCoords(offsetX,offsetY);
     const hexCode = convertImageDataToHexCode(imageData);
 
 
-    const imageDataForDisplay = getImageDataForDisplay(x,y);
+    const imageDataForDisplay = getImageDataForDisplay(offsetX,offsetY);
 
     const pixelMatrix = generatePixelMatrix(imageDataForDisplay);
 
     const colorPickerModalElement = getColorPickerModalHTMLElement();
 
-    const colorPickerModalHtml = ColorPickDisplayTemplate(pixelMatrix, x,y);
+    const colorPickerModalHtml = ColorPickDisplayTemplate(pixelMatrix, x, y);
 
     colorPickerModalElement.innerHTML = colorPickerModalHtml;
 
@@ -57,5 +59,5 @@ export const bindEventListener = () => {
     const canvasElement = getCanvasHTMLElement();
 
     canvasElement.addEventListener('mousedown', listenForClick);
-    // document.body.addEventListener('mouseup', listenForRelease);
+    document.body.addEventListener('mouseup', listenForRelease);
 }
