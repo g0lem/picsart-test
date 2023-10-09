@@ -6,7 +6,6 @@ export const uploadImageHandler = () => {
 
     file.addEventListener('change', ()=>{
         const myImage = file.files[0];
-        console.log(myImage);
         renderFromBlob(myImage);
     })
 }

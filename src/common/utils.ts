@@ -1,4 +1,4 @@
-import { canvasElementId, colorCircleElementId, colorDisplayElementId, colorPickerModalElementId, copyColorButtonId } from "./constants";
+import { canvasElementId, colorCircleElementId, colorDisplayElementId, colorPickerButtonId, colorPickerModalElementId, copyColorButtonId, selectToolButtonId } from "./constants";
 
 export const getCanvasHTMLElement = () => <HTMLElement>document.getElementById(canvasElementId)!;
 
@@ -11,7 +11,7 @@ export const getColorPickerModalHTMLElement = () => <HTMLElement>document.getEle
 
 export const getCopyColorButton = () => <HTMLElement>document.getElementById(copyColorButtonId)!;
 
-
+export const getColorPickerButton = () => <HTMLElement>document.getElementById(colorPickerButtonId)!;
 
 export const getCanvas = () => <HTMLCanvasElement>document.getElementById(canvasElementId)!
 

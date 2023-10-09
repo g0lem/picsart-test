@@ -1,5 +1,5 @@
 import { canvasElementId } from './common/constants'
-import { bindCopyColor, bindEventListener } from './events/eventListener';
+import { bindColorPickerButton, bindCopyColor, bindEventListener } from './events/eventListener';
 import { renderCanvas, renderFromBlob } from './render/renderCanvas'
 import { uploadImageHandler } from './render/uploadImageHandler';
 import './style.css'
@@ -27,6 +27,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div>
       <input type="file" id="customImage" name="filename" accept=".jpg, .jpeg, .png"/>
     </div>
+
+    <div id="colorPickerButton" class="CustomButton">
+      <img src="cursor.svg"/>
+      Color Picker
+    </div>
   </div>
   <div id="colorPickerModal"> </div>
   <div class="canvasContainer" title="Click and Hover to copy the color">
@@ -37,4 +42,4 @@ bindCopyColor();
 uploadImageHandler();
 renderCanvas();
 
-bindEventListener();
+bindColorPickerButton();
